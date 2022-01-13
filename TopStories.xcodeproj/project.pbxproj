@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A253089278E0C97003758D2 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A253088278E0C97003758D2 /* ArticlesViewController.swift */; };
 		8A5610E727862CEB0068F85F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5610E627862CEB0068F85F /* AppDelegate.swift */; };
 		8A5610E927862CEB0068F85F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5610E827862CEB0068F85F /* SceneDelegate.swift */; };
 		8A5610EB27862CEB0068F85F /* SourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5610EA27862CEB0068F85F /* SourcesViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A253088278E0C97003758D2 /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
 		8A5610E327862CEB0068F85F /* TopStories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopStories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5610E627862CEB0068F85F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5610E827862CEB0068F85F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				8A5610F127862CEE0068F85F /* LaunchScreen.storyboard */,
 				8A5610F427862CEE0068F85F /* Info.plist */,
 				8A5610FA278643570068F85F /* SwiftyJSON.swift */,
+				8A253088278E0C97003758D2 /* ArticlesViewController.swift */,
 			);
 			path = TopStories;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				8A5610E727862CEB0068F85F /* AppDelegate.swift in Sources */,
 				8A5610E927862CEB0068F85F /* SceneDelegate.swift in Sources */,
 				8A5610FB278643570068F85F /* SwiftyJSON.swift in Sources */,
+				8A253089278E0C97003758D2 /* ArticlesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

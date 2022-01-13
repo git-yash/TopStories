@@ -1,21 +1,20 @@
 //
-//  ViewController.swift
+//  ArticlesViewController.swift
 //  TopStories
 //
-//  Created by Yash Shah on 1/5/22.
+//  Created by Yash Shah on 1/11/22.
 //
 
 import UIKit
 
-let apiKey = "d45229539c5d4c6ea40599abe7ec48c8"
-
-class SourcesViewController: UITableViewController {
-    var sources = [[String: String]]()
+class ArticlesViewController: UITableViewController {
+    var articles = [[String: String]]()
+    var source = [String: String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "News Sources"
-        let query = "https://newsapi.org/v1/sources?language=en&country=us&apiKey=\(apiKey)"
+        let query = "https://newsapi.org/v1/articles?source= \(source["id"]!)&apiKey=\(apiKey)"
         
         let url = URL(string: query)!
         DispatchQueue.global().async {
@@ -32,13 +31,13 @@ class SourcesViewController: UITableViewController {
     }
 
     func parse(json: JSON){
-        for result in json["sources"].arrayValue {
-            let id = result["id"].stringValue
-            let name = result["name"].stringValue
-            let description = result["description"].stringValue
-            let source = ["id": id, "name": name, "description": description]
-            
-            sources.append(source)
+        for result in json["articles"].arrayValue {
+            let title = result[ "title"].stringValue
+            let description = result[ "description"].stringValue
+            let url = result[ "url"].stringValue
+            let article = ["title": title, "description": description,
+                            "url": url]
+            articles.append(article)
         }
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -54,22 +53,21 @@ class SourcesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sources.count
+        return articles.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsSourceCell", for: indexPath)
-        let source = sources[indexPath.row]
-        cell.textLabel?.text = source["name"]
-        cell.textLabel?.font = .boldSystemFont(ofSize: 15)
-        cell.detailTextLabel?.text = source["description"]
+        let cell = tableView.dequeueReusableCell( withIdentifier:  "StoryCell", for: indexPath)
+        let article = articles[indexPath.row]
+        cell.textLabel?.text = article["title"]
+        cell.detailTextLabel?.text = article["description"]
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let articlesVC = segue.destination as? ArticlesViewController  {
-            let index = tableView.indexPathForSelectedRow?.row
-            articlesVC.source = sources[index!]
-        }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let tappedArticle = articles[indexPath.row]
+        let url = URL(string: tappedArticle["url"]!)
+        UIApplication.shared.open(url!)
     }
+
 }
